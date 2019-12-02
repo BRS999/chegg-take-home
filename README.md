@@ -22,3 +22,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - If I had more time, I would have implemented more tests.
 - I also would have used the CSS Grid.
 - I would have enhanced the UI of course.
+- Also, the instructions said a thumbnail of 40x40 but I chose 50px because it looks a bit better.

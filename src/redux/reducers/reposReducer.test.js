@@ -1,7 +1,7 @@
 import reposReducer from "./reposReducer";
 import * as actions from "../actions/reposActions";
 
-it("should get load Repos", () => {
+it("should load Repos", () => {
   // arrange
   const initialState = [
     {

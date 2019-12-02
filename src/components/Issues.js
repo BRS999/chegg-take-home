@@ -11,6 +11,7 @@ const Img = styled.img`
   padding: 5px;
   width: 50px;
   float: left;
+  margin: 0px 5px 0px 0px;
 `;
 
 const NoDots = styled.li`

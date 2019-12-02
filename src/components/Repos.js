@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import "./container.css";
 
 const Hover = styled.li`
   :hover {
-    background: lightblue;
+    font-weight: bold;
+    cursor: pointer;
   }
+  list-style-type: none;
 `;
 
 const Repos = ({ repos = [], handleClick }) => {
   return (
     <>
-      {repos.length ? <h1>Repos</h1> : ""}
-
-      <ul>
+      <ul className="column">
+        {repos.length ? <h1>Repos</h1> : ""}
         {repos.map(repo => {
           return (
             <Hover key={repo.id} onClick={() => handleClick(repo.url)}>

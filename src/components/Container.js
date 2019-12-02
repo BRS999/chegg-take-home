@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Issues from "./Issues";
 import Repos from "./Repos";
-import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { loadRepos } from "../redux/actions/reposActions";
@@ -9,13 +8,6 @@ import {
   loadIssues,
   reorderIssuesSuccess
 } from "../redux/actions/issuesActions";
-
-const GridContainer = styled.div`
-  display: grid;
-  column-gap: 20px;
-  row-gap: 20px;
-  margin: 20px 20%;
-`;
 
 const Container = ({ repos, actions, issues }) => {
   const [input, setInput] = useState("");
@@ -37,8 +29,8 @@ const Container = ({ repos, actions, issues }) => {
   };
 
   return (
-    <GridContainer>
-      <div>
+    <div>
+      <div className="row center">
         <input
           type="text"
           size="50"
@@ -50,9 +42,12 @@ const Container = ({ repos, actions, issues }) => {
         />{" "}
         <button onClick={() => handleSubmit(input)}>Submit</button>
       </div>
-      <Issues issues={issues} />
-      <Repos handleClick={handleClick} repos={repos} />
-    </GridContainer>
+      <hr />
+      <div className="row">
+        <Repos handleClick={handleClick} repos={repos} />
+        <Issues issues={issues} />
+      </div>
+    </div>
   );
 };
 

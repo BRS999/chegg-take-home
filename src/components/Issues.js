@@ -10,20 +10,27 @@ const Img = styled.img`
   border-radius: 4px;
   padding: 5px;
   width: 50px;
+  float: left;
 `;
-const SortableItem = sortableElement(({ value, img, created, updated }) => {
+
+const NoDots = styled.li`
+  list-style-type: none;
+  cursor: pointer;
+`;
+
+const SortableItem = sortableElement(({ title, img, created, updated }) => {
   return (
-    <li>
-      {value}
+    <NoDots>
       <Img src={img} alt="avatar" />
-      {moment(created).format("DD/MM/YYYY")}
-      {" " + moment(updated).fromNow("DD") + " ago"}
-    </li>
+      <div style={{ fontWeight: "bold" }}> {title}</div>
+      <div> Created : {moment(created).format("DD/MM/YYYY")}</div>
+      <div> Updated : {" " + moment(updated).fromNow("DD") + " ago"}</div>
+    </NoDots>
   );
 });
 
 const SortableContainer = sortableContainer(({ children }) => {
-  return <ul>{children}</ul>;
+  return <ul className="column">{children}</ul>;
 });
 
 const Issues = ({ issues = [], actions }) => {
@@ -32,14 +39,13 @@ const Issues = ({ issues = [], actions }) => {
   };
   return (
     <>
-      {issues.length ? <h1>Issues</h1> : ""}
-
       <SortableContainer onSortEnd={onSortEnd}>
+        {issues.length ? <h1>Issues</h1> : ""}
         {issues.map((issue, index) => (
           <SortableItem
             key={issue.id}
             index={index}
-            value={issue.title}
+            title={issue.title}
             created={issue.created_at}
             updated={issue.updated_at}
             img={issue.user.avatar_url}

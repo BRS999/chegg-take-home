@@ -11,5 +11,5 @@ const Head = styled.header`
 `;
 
 export default function Header() {
-  return <Head>Github Take Home Challenge</Head>;
+  return <Head>Chegg Take Home Challenge</Head>;
 }

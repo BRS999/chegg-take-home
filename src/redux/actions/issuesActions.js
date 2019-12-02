@@ -20,7 +20,6 @@ export function loadIssues(url) {
   return function(dispatch) {
     return Axios.get(`${url}/issues`)
       .then(({ data }) => {
-        console.log("issues", data);
         dispatch(loadIssuesSuccess(data));
       })
       .catch(error => {
